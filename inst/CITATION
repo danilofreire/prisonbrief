@@ -1,0 +1,15 @@
+citHeader("To cite 'prisonbrief' in publications, please use:")
+
+citEntry(entry = "Manual",
+  title        = "{prisonbrief}: Downloads and Parses World Prison Brief Data",
+  author       = personList(as.person("Danilo Freire"),
+  as.person("Robert Myles McDonnell")),
+  note = "R package version 0.1.0",
+  url = "https://CRAN.R-project.org/package=prisonbrief",
+
+  textVersion  =
+  paste("Danilo Freire and Robert Myles McDonnell (2017).",
+        "prisonbrief: Downloads and Parses World Prison Brief Data.",
+        "R package version 0.1.0.",
+        "URL: https://CRAN.R-project.org/package=prisonbrief")
+)
