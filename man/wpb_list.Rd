@@ -7,5 +7,5 @@
 wpb_list()
 }
 \description{
-Prints a list of availbale countries to the console.
+Prints a list of available countries to the console.
 }

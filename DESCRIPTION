@@ -21,5 +21,6 @@ Imports:
     tidyr (>= 0.6.3),
     rlang (>= 0.1.1),
     passport (>= 0.1.1),
-    rnaturalearth (>= 0.1.0)
+    rnaturalearth (>= 0.1.0),
+    rnaturalearthdata (>= 0.1.0)
 RoxygenNote: 6.0.1

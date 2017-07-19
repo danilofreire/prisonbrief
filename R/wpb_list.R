@@ -1,5 +1,5 @@
 #' @title Available World Prison Brief Countries
-#' @description Prints a list of availbale countries to the console.
+#' @description Prints a list of available countries to the console.
 #' @importFrom xml2 read_html
 #' @importFrom tibble tibble
 #' @importFrom rvest html_nodes
@@ -51,7 +51,7 @@ wbp_region_list <- function(region = c("Africa", "Asia", "Caribbean",
 
   } else if(grepl("Caribbean", states)){
 
-      region_list <- c("Anguilla (United Kingdom)", "Antigua and Barbuda", "Aruba (Netherlands)", "Bahamas", "Barbados", "Cayman Islands (United Kingdom)", "Cuba", "Curaçao (Netherlands)", "Dominica", "Dominican Republic", "Grenada", "Guadeloupe (France)", "Haiti", "Jamaica", "Martinique (France)", "Puerto Rico (USA)", "Sint Maarten (Netherlands)", "St. Kitts and Nevis", "St. Lucia", "St. Vincent and the Grenadines", "Trinidad and Tobago", "Virgin Islands (United Kingdom)", "Virgin Islands (USA)")
+      region_list <- c("Anguilla (United Kingdom)", "Antigua and Barbuda", "Aruba (Netherlands)", "Bahamas", "Barbados", "Cayman Islands (United Kingdom)", "Cuba", "Cura\u00a7ao (Netherlands)", "Dominica", "Dominican Republic", "Grenada", "Guadeloupe (France)", "Haiti", "Jamaica", "Martinique (France)", "Puerto Rico (USA)", "Sint Maarten (Netherlands)", "St. Kitts and Nevis", "St. Lucia", "St. Vincent and the Grenadines", "Trinidad and Tobago", "Virgin Islands (United Kingdom)", "Virgin Islands (USA)")
 
   } else if(grepl("Central America", states)){
 
