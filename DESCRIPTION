@@ -2,10 +2,13 @@ Package: prisonbrief
 Type: Package
 Title: Downloads and Parses World Prison Brief Data
 Version: 0.1.0
-Author: Danilo Freire, Robert Myles McDonnell
+Authors@R: c(
+    person("Danilo", "Freire", , "danilofreire@gmail.com", c("aut", "cre")),
+    person("Robert", "McDonnell", , "mcdonnell.robert5@gmail.com", c("aut", "cre"))
+    )
+URL: https://github.com/danilofreire/prisonbrief
 Maintainer: Danilo Freire <danilofreire@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Download, parses and tidies information from the World Prison Brief project <http://www.prisonstudies.org/>. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
