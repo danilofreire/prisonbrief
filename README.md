@@ -38,42 +38,89 @@ The first is a convenience function named `wpb_list()`. It prints a list of avai
 library(prisonbrief)
 
 wpb_list()
-# A tibble: 226 x 2
-                country_name             country_url
-                       <chr>                   <chr>
- 1               Afghanistan             afghanistan
- 2                   Albania                 albania
- 3                   Algeria                 algeria
- 4     American Samoa  (USA)      american-samoa-usa
- 5                   Andorra                 andorra
- 6                    Angola                  angola
- 7 Anguilla (United Kingdom) anguilla-united-kingdom
- 8       Antigua and Barbuda     antigua-and-barbuda
- 9                 Argentina               argentina
-10                   Armenia                 armenia
-# ... with 216 more rows
+#> # A tibble: 226 x 2
+#>                 country_name             country_url
+#>                        <chr>                   <chr>
+#>  1               Afghanistan             afghanistan
+#>  2                   Albania                 albania
+#>  3                   Algeria                 algeria
+#>  4     American Samoa  (USA)      american-samoa-usa
+#>  5                   Andorra                 andorra
+#>  6                    Angola                  angola
+#>  7 Anguilla (United Kingdom) anguilla-united-kingdom
+#>  8       Antigua and Barbuda     antigua-and-barbuda
+#>  9                 Argentina               argentina
+#> 10                   Armenia                 armenia
+#> # ... with 216 more rows
 ```
 
-The second function is `wpb_tables()`. This function returns a series of variables about the prison systems of the world, of a particular region, or of a specific country. For instance, the code below downloads prison data for Africa:
+The second function is `wpb_table()`. This function returns a series of variables about the prison systems of the world, of a particular region, or of a specific country. For instance, the code below downloads prison data for Africa:
 
 ``` r
-africa <- wpb_tables(region = "Africa")
+africa <- wpb_table(region = "Africa")
 names(africa)
- [1] "country"                 "prison_population_rate"  "prison-population-total" "female-prisoners"       
- [5] "pre-trial-detainees"     "foreign-prisoners"       "occupancy-level"         "iso_a2"                 
- [9] "name"                    "geometry"    
+#>  [1] "country"                 "prison_population_rate" 
+#>  [3] "prison-population-total" "female-prisoners"       
+#>  [5] "pre-trial-detainees"     "foreign-prisoners"      
+#>  [7] "occupancy-level"         "iso_a2"                 
+#>  [9] "name"                    "geometry"
 ```
 
 The region choices are "Africa", "Asia", "Caribbean", "Central America", "Europe", "Middle East", "North America", "Oceania", "South America" and "All".
 
-The `wpb_tables()` also provides geometric shapes to make plotting maps easier. For instance, you can download and plot the prison population rate in South America with only two lines of code:
+`wpb_table()` also provides geometric shapes for maps. For instance, you can download and plot the prison population rate in South America with only three lines of code:
 
 ``` r
-south_america <- wpb_tables(region = "South America")
-ggplot(south_america, aes(fill = prison_population_rate)) + geom_sf() + theme_minimal()
+south_america <- wpb_table(region = "South America")
+
+library(ggplot2)
+ggplot(south_america, aes(fill = prison_population_rate)) + geom_sf() + scale_fill_distiller(palette = "YlOrRd", trans = "reverse") + theme_minimal()
 ```
 
-![](http://i.imgur.com/wek7T71.png)
+![](README-ggpplot-map-1.png)
+
+Finally, we have added the `wpb_series()` function to the package. The function downloads and tidies the tables describing the trends in the prison population total and the prison population rate for every jurisdiction included in the project. Below is an example taken from [Germany's country profile](http://www.prisonstudies.org/country/germany):
+
+![](http://i.imgur.com/vtbrtg1.png)
+
+You can retrieve the same information with the following code:
+
+``` r
+germany <- wpb_series(country =  "Germany")
+germany
+#> # A tibble: 8 x 4
+#>   Country  Year `Prison population total` `Prison population rate`
+#>     <chr> <dbl>                     <dbl>                    <dbl>
+#> 1 germany  2000                     70252                       85
+#> 2 germany  2002                     70977                       86
+#> 3 germany  2004                     79452                       96
+#> 4 germany  2006                     76629                       93
+#> 5 germany  2008                     72259                       88
+#> 6 germany  2010                     69385                       85
+#> 7 germany  2012                     65889                       82
+#> 8 germany  2014                     61872                       76
+```
+
+`wpb_series()` can also be combined with `wpb_list()` to make interesting time series graphs. The code below downloads data for all countries then plots the prison population rate for Brazil, Germany, Russia and the United States:
+
+``` r
+x <- list()
+countries <- wpb_list()
+for(i in 1:nrow(countries)){
+  y <- try(wpb_series(country = countries$country_url[i]), silent = FALSE)
+  if(class(y) != 'try-error'){
+    x[[i]] <- y
+  } else{
+    next
+  }
+}
+X <- data.table::rbindlist(x, fill = TRUE) %>% 
+  dplyr::full_join(countries, by = c("Country" = "country_url"))
+
+X %>% dplyr::filter(country_name %in% c("Brazil", "Germany", "Russian Federation", "United States of America")) %>% ggplot(aes(x = Year, y = `Prison population rate`, group = country_name, colour = country_name)) + geom_line() + theme_minimal()
+```
+
+![](README-for-loop-1.png)
 
 Contributions
 -------------
