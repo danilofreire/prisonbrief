@@ -1,5 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) [![Travis-CI Build Status](https://travis-ci.org/danilofreire/prisonbrief.svg?branch=master)](https://travis-ci.org/danilofreire/prisonbrief) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
+
 prisonbrief: An R package that returns tidy data from the World Prison Brief website
 ====================================================================================
 
@@ -147,6 +149,7 @@ citation("prisonbrief")
 #>     title = {{prisonbrief}: Downloads and Parses World Prison Brief Data},
 #>     author = {Danilo Freire and Robert Myles McDonnell},
 #>     note = {R package version 0.1.0},
+#>     year = {2017},
 #>     url = {https://CRAN.R-project.org/package=prisonbrief},
 #>   }
 ```

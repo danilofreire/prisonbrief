@@ -4,7 +4,7 @@ Title: Downloads and Parses World Prison Brief Data
 Version: 0.1.0
 Authors@R: c(
     person("Danilo", "Freire", , "danilofreire@gmail.com", c("aut", "cre")),
-    person("Robert", "McDonnell", , "mcdonnell.robert5@gmail.com", c("aut", "cre"))
+    person("Robert", "McDonnell", , "mcdonnell.robert5@gmail.com", c("aut"))
     )
 URL: https://github.com/danilofreire/prisonbrief
 Maintainer: Danilo Freire <danilofreire@gmail.com>
