@@ -105,7 +105,7 @@ X %>% dplyr::filter(country_name %in% c("Brazil", "Germany", "Russian Federation
 
 If you use the `prisonbrief` package, you can cite it with:
 
-```{r citation, eval = FALSE}
+```{r citation}
 citation("prisonbrief")
 ```
 

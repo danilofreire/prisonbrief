@@ -134,6 +134,21 @@ If you use the `prisonbrief` package, you can cite it with:
 
 ``` r
 citation("prisonbrief")
+#> 
+#> To cite 'prisonbrief' in publications, please use:
+#> 
+#>   Danilo Freire and Robert Myles McDonnell (2017). prisonbrief:
+#>   Downloads and Parses World Prison Brief Data. R package version
+#>   0.1.0. URL: https://CRAN.R-project.org/package=prisonbrief
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {{prisonbrief}: Downloads and Parses World Prison Brief Data},
+#>     author = {Danilo Freire and Robert Myles McDonnell},
+#>     note = {R package version 0.1.0},
+#>     url = {https://CRAN.R-project.org/package=prisonbrief},
+#>   }
 ```
 
 Please also cite the source as [World Prison Brief, Institute for Criminal Policy Research](http://www.prisonstudies.org/about-us).
