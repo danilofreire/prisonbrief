@@ -59,11 +59,10 @@ The second function is `wpb_table()`. This function returns a series of variable
 ``` r
 africa <- wpb_table(region = "Africa")
 names(africa)
-#>  [1] "country"                 "prison_population_rate" 
-#>  [3] "prison-population-total" "female-prisoners"       
-#>  [5] "pre-trial-detainees"     "foreign-prisoners"      
-#>  [7] "occupancy-level"         "iso_a2"                 
-#>  [9] "name"                    "geometry"
+ [1] "country"                 "prison_population_rate"  "prison-population-total"
+ [4] "female-prisoners"        "pre-trial-detainees"     "foreign-prisoners"      
+ [7] "occupancy-level"         "iso_a2"                  "name"                   
+[10] "geometry" 
 ```
 
 The region choices are "Africa", "Asia", "Caribbean", "Central America", "Europe", "Middle East", "North America", "Oceania", "South America" and "All".
@@ -77,7 +76,7 @@ library(ggplot2)
 ggplot(south_america, aes(fill = prison_population_rate)) + geom_sf() + scale_fill_distiller(palette = "YlOrRd", trans = "reverse") + theme_minimal()
 ```
 
-![](README-ggpplot-map-1.png)
+![](http://i.imgur.com/JxO0wCr.png)
 
 Finally, we have added the `wpb_series()` function to the package. The function downloads and tidies the tables describing the trends in the prison population total and the prison population rate for every jurisdiction included in the project. Below is an example taken from [Germany's country profile](http://www.prisonstudies.org/country/germany):
 
@@ -88,17 +87,17 @@ You can retrieve the same information with the following code:
 ``` r
 germany <- wpb_series(country =  "Germany")
 germany
-#> # A tibble: 8 x 4
-#>   Country  Year `Prison population total` `Prison population rate`
-#>     <chr> <dbl>                     <dbl>                    <dbl>
-#> 1 germany  2000                     70252                       85
-#> 2 germany  2002                     70977                       86
-#> 3 germany  2004                     79452                       96
-#> 4 germany  2006                     76629                       93
-#> 5 germany  2008                     72259                       88
-#> 6 germany  2010                     69385                       85
-#> 7 germany  2012                     65889                       82
-#> 8 germany  2014                     61872                       76
+# A tibble: 8 x 4
+  Country  Year `Prison population total` `Prison population rate`
+    <chr> <dbl>                     <dbl>                    <dbl>
+1 germany  2000                     70252                       85
+2 germany  2002                     70977                       86
+3 germany  2004                     79452                       96
+4 germany  2006                     76629                       93
+5 germany  2008                     72259                       88
+6 germany  2010                     69385                       85
+7 germany  2012                     65889                       82
+8 germany  2014                     61872                       76
 ```
 
 `wpb_series()` can also be combined with `wpb_list()` to make interesting time series graphs. The code below downloads data for all countries then plots the prison population rate for Brazil, Germany, Russia and the United States:
@@ -120,7 +119,7 @@ X <- data.table::rbindlist(x, fill = TRUE) %>%
 X %>% dplyr::filter(country_name %in% c("Brazil", "Germany", "Russian Federation", "United States of America")) %>% ggplot(aes(x = Year, y = `Prison population rate`, group = country_name, colour = country_name)) + geom_line() + theme_minimal()
 ```
 
-![](README-for-loop-1.png)
+![](http://i.imgur.com/lIUhO5E.png)
 
 Contributions
 -------------
