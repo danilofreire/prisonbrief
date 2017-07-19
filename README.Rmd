@@ -99,7 +99,7 @@ X %>% dplyr::filter(country_name %in% c("Brazil", "Germany", "Russian Federation
   
 ## Contributions
 
-`prisonbrief` was written by [Danilo Freire](http://danilofreire.com/) and [Robert Myles McDonnell](https://robertmyles.github.io/). Feedback and comments are welcome. If you have any suggestions on how to improve the package feel free to [open an issue on GitHub](https://github.com/danilofreire/wpb/issues).
+`prisonbrief` was written by [Danilo Freire](http://danilofreire.com/) and [Robert Myles McDonnell](https://robertmyles.github.io/). Feedback and comments are welcome. If you have any suggestions on how to improve the package feel free to [open an issue on GitHub](https://github.com/danilofreire/prisonbrief/issues).
 
 ## Citation
 
