@@ -2,7 +2,7 @@
 % Please edit documentation in R/wpb_series.R
 \name{wpb_series}
 \alias{wpb_series}
-\title{Download and Parse World Prison Brief Data}
+\title{Download and parse World Prison Brief time series data}
 \usage{
 wpb_series(country = NULL)
 }
@@ -10,7 +10,7 @@ wpb_series(country = NULL)
 \item{country}{Country name, in the url-style used by the World Prison Brief. See note below.}
 }
 \description{
-Download and parse World Prison Brief data
+Download and parse World Prison Brief time series data
 }
 \note{
 Important: the country names must be the \emph{url} names associated with the country. These can be seen in the second column of the dataframe returned from \code{wpb_list()}. Most of these are simply lower-case versions of the country name, such as 'algeria'. Some, such as "American Samoa  (USA)" are in the following format: \code{american-samoa-usa}.
