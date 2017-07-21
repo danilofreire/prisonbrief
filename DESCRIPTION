@@ -7,7 +7,6 @@ Authors@R: c(
     person("Robert", "McDonnell", , "mcdonnell.robert5@gmail.com", c("aut"))
     )
 URL: https://github.com/danilofreire/prisonbrief
-Maintainer: Danilo Freire <danilofreire@gmail.com>
 Description: Download, parses and tidies information from the World Prison Brief project <http://www.prisonstudies.org/>. 
 License: MIT + file LICENSE
 Encoding: UTF-8
