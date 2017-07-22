@@ -19,7 +19,7 @@
 #' @importFrom passport parse_country
 #' @importFrom passport as_country_name
 #' @importFrom rnaturalearth ne_countries
-#' @importFrom magrittr ' %>% '
+#' @importFrom stringr replace_all
 #' @param region \code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.
 #' @param country \code{character}. If details of a specific country are required, the country can be specified by name. A non-\code{NULL} value for this parameter will void the \code{region} argument. For a list of country names, use \code{wpb_list()}.
 #' @examples
