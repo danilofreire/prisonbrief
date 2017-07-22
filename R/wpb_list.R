@@ -1,4 +1,4 @@
-#' @title Available World Prison Brief Countries
+#' @title Available World Prison Brief countries
 #' @description Prints a list of available countries to the console.
 #' @importFrom xml2 read_html
 #' @importFrom tibble tibble
@@ -29,7 +29,9 @@ wpb_list <- function(){
 
 
 
-
+#' @title Lists all countries in a region
+#' @description Creates a list of all countries in a given region.
+#' @param region \code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.
 #' @export
 wbp_region_list <- function(region = c("Africa", "Asia", "Caribbean",
                                        "Central America", "Europe",

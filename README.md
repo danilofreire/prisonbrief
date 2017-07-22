@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) [![Travis-CI Build Status](https://travis-ci.org/danilofreire/prisonbrief.svg?branch=master)](https://travis-ci.org/danilofreire/prisonbrief) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) ![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/danilofreire/prisonbrief?branch=master&svg=true) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
 
 prisonbrief: An R package that returns tidy data from the World Prison Brief website
 ====================================================================================
@@ -88,7 +88,7 @@ Finally, we have added the `wpb_series()` function to the package. The function 
 You can retrieve the same information with the following code:
 
 ``` r
-germany <- wpb_series(country =  "Germany")
+germany <- wpb_series(country = "Germany")
 germany
 #> # A tibble: 8 x 4
 #>   Country  Year `Prison population total` `Prison population rate`

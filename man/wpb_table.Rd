@@ -2,7 +2,7 @@
 % Please edit documentation in R/wpb_table.R
 \name{wpb_table}
 \alias{wpb_table}
-\title{Download and Parse World Prison Brief Data}
+\title{Download and parse World Prison Brief data}
 \usage{
 wpb_table(region = c("Africa", "Asia", "Caribbean", "Central America",
   "Europe", "Middle East", "North America", "Oceania", "South America", "All"),

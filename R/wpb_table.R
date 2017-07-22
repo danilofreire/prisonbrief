@@ -1,4 +1,4 @@
-#' @title Download and Parse World Prison Brief Data
+#' @title Download and parse World Prison Brief data
 #' @description Download and parse World Prison Brief data
 #' @import rnaturalearthdata
 #' @importFrom httr GET
@@ -12,6 +12,7 @@
 #' @importFrom dplyr full_join
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate
+#' @importFrom data.table :=
 #' @importFrom passport parse_country
 #' @importFrom passport as_country_name
 #' @importFrom rnaturalearth ne_countries
@@ -26,6 +27,7 @@
 #' CA <- wpb_tables(region = "Central America")
 #' }
 #' @export
+
 wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                                   "Central America", "Europe",
                                   "Middle East", "North America",

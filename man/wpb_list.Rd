@@ -2,7 +2,7 @@
 % Please edit documentation in R/wpb_list.R
 \name{wpb_list}
 \alias{wpb_list}
-\title{Available World Prison Brief Countries}
+\title{Available World Prison Brief countries}
 \usage{
 wpb_list()
 }
