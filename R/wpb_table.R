@@ -7,6 +7,7 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_table
 #' @importFrom magrittr set_colnames
+#' @importFrom magrittr %>%
 #' @importFrom tidyr spread
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr full_join
@@ -21,10 +22,10 @@
 #' @examples
 #' \dontrun{
 #' # Get details for Spain:
-#' espana <- wpb_tables(country = "Spain")
+#' espana <- wpb_table(country = "Spain")
 #'
 #' # Get details for Central America:
-#' CA <- wpb_tables(region = "Central America")
+#' CA <- wpb_table(region = "Central America")
 #' }
 #' @export
 

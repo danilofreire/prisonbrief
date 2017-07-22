@@ -4,6 +4,7 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_table
 #' @importFrom magrittr set_colnames
+#' @importFrom magrittr %>%
 #' @importFrom tidyr spread
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr slice

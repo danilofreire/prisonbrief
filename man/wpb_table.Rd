@@ -19,9 +19,9 @@ Download and parse World Prison Brief data
 \examples{
 \dontrun{
 # Get details for Spain:
-espana <- wpb_tables(country = "Spain")
+espana <- wpb_table(country = "Spain")
 
 # Get details for Central America:
-CA <- wpb_tables(region = "Central America")
+CA <- wpb_table(region = "Central America")
 }
 }

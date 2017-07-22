@@ -1,6 +1,7 @@
 #' @title Available World Prison Brief countries
 #' @description Prints a list of available countries to the console.
 #' @importFrom xml2 read_html
+#' @importFrom magrittr %>%
 #' @importFrom tibble tibble
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_table
