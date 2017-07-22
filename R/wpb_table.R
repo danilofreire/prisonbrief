@@ -10,6 +10,8 @@
 #' @importFrom magrittr %>%
 #' @importFrom tidyr spread
 #' @importFrom dplyr bind_cols
+#' @importFrom dplyr funs
+#' @importFrom dplyr mutate_all
 #' @importFrom dplyr full_join
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate
@@ -17,6 +19,7 @@
 #' @importFrom passport parse_country
 #' @importFrom passport as_country_name
 #' @importFrom rnaturalearth ne_countries
+#' @importFrom magrittr ' %>% '
 #' @param region \code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.
 #' @param country \code{character}. If details of a specific country are required, the country can be specified by name. A non-\code{NULL} value for this parameter will void the \code{region} argument. For a list of country names, use \code{wpb_list()}.
 #' @examples
@@ -137,6 +140,24 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 
                 country_table <- parse_urls(url)
                 
+                country_table <- country_table %>% 
+                        magrittr::set_colnames(., 
+                                               value = c("country",
+                                                "ministry_responsible",
+                                                "prison_admin",
+                                                "female_prisoners",
+                                                "foreign_prisoners",
+                                                 "juvenile_prisoners",
+                                                 "number_institutions",
+                                                 "occupancy_level",
+                                                 "official_capacity",
+                                                    "pre_trial_prisoners",
+                                                    "prison_population_rate",
+                                                  "prison_population_total")) %>%
+                        dplyr::mutate_all(.funs = dplyr::funs(stringr::str_replace_all, 
+                                               .args = list(pattern = "\n",
+                                                           replacement = "")))
+                        
                 return(country_table)
                 
         }
