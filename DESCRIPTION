@@ -6,7 +6,7 @@ Authors@R: c(
     person("Danilo", "Freire", , "danilofreire@gmail.com", c("aut", "cre")),
     person("Robert", "McDonnell", , "mcdonnell.robert5@gmail.com", c("aut"))
     )
-URL: https://github.com/danilofreire/prisonbrief
+URL: http://danilofreire.com/prisonbrief
 Description: Download, parses and tidies information from the World Prison Brief project <http://www.prisonstudies.org/>. 
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -25,6 +25,7 @@ Imports:
     rlang (>= 0.1.1),
     passport (>= 0.1.1),
     rnaturalearth (>= 0.1.0),
-    rnaturalearthdata (>= 0.1.0)
+    rnaturalearthdata (>= 0.1.0),
+    stringr(>= 1.2.0)
 RoxygenNote: 6.0.1
 Suggests: testthat

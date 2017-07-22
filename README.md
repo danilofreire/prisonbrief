@@ -70,16 +70,21 @@ names(africa)
 
 The region choices are "Africa", "Asia", "Caribbean", "Central America", "Europe", "Middle East", "North America", "Oceania", "South America" and "All".
 
-`wpb_table()` also provides geometric shapes for maps. For instance, you can download and plot the prison population rate in South America with only three lines of code:
+`wpb_table()` also provides geometric shapes for maps. For instance, you can download and plot the prison population rate in South America with only a few lines of code:
 
 ``` r
 south_america <- wpb_table(region = "South America")
 
 library(ggplot2)
-ggplot(south_america, aes(fill = prison_population_rate)) + geom_sf() + scale_fill_distiller(palette = "YlOrRd", trans = "reverse") + theme_minimal()
+ggplot(south_america, aes(fill = prison_population_rate)) +
+        geom_sf() +
+        scale_fill_distiller(palette = "YlOrRd", trans = "reverse") +
+        theme_minimal()
 ```
 
 ![](http://i.imgur.com/JxO0wCr.png)
+
+The function can also be used to retrieve data for a single country. The data returned are parsed from the single country tables, however, and are not ready for quantitative analysis without further cleaning (removing parentheses etc.). Since some of this information may be relevant, we have chosen to leave it in. Data from regions instead of a single country are fully prepared for automated analysis.
 
 Finally, we have added the `wpb_series()` function to the package. The function downloads and tidies the tables describing the trends in the prison population total and the prison population rate for every jurisdiction included in the project. Below is an example taken from [Germany's country profile](http://www.prisonstudies.org/country/germany):
 
@@ -119,7 +124,14 @@ for(i in 1:nrow(countries)){
 X <- data.table::rbindlist(x, fill = TRUE) %>% 
   dplyr::full_join(countries, by = c("Country" = "country_url"))
 
-X %>% dplyr::filter(country_name %in% c("Brazil", "Germany", "Russian Federation", "United States of America")) %>% ggplot(aes(x = Year, y = `Prison population rate`, group = country_name, colour = country_name)) + geom_line() + theme_minimal()
+X %>% dplyr::filter(country_name %in% c("Brazil",
+                                        "Germany",
+                                        "Russian Federation",
+                                        "United States of America")) %>%
+        ggplot(aes(x = Year, y = `Prison population rate`,
+                   group = country_name, colour = country_name)) +
+        geom_line() +
+        theme_minimal()
 ```
 
 ![](http://i.imgur.com/lIUhO5E.png)

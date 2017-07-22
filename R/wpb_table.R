@@ -7,7 +7,7 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_table
 #' @importFrom magrittr set_colnames
-#' @importFrom magrittr %>%
+#' @importFrom magrittr '%>%'
 #' @importFrom tidyr spread
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr funs
@@ -15,11 +15,11 @@
 #' @importFrom dplyr full_join
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate
-#' @importFrom data.table :=
+#' @importFrom data.table ':='
 #' @importFrom passport parse_country
 #' @importFrom passport as_country_name
 #' @importFrom rnaturalearth ne_countries
-#' @importFrom stringr replace_all
+#' @importFrom stringr str_replace_all
 #' @param region \code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.
 #' @param country \code{character}. If details of a specific country are required, the country can be specified by name. A non-\code{NULL} value for this parameter will void the \code{region} argument. For a list of country names, use \code{wpb_list()}.
 #' @examples
