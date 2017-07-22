@@ -5,6 +5,7 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_table
 #' @importFrom rvest html_text
+#' @importFrom magrittr ' %>% '
 #' @export
 wpb_list <- function(){
 
