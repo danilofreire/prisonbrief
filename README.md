@@ -22,7 +22,7 @@ You can install the most recent development version of `prisonbrief` using the `
 if(!require(devtools)) install.packages("devtools")
 ```
 
-Then you need to load `devtools` and install `prisonbrief` from its GitHub repository:
+Then you need to load `devtools` and install `prisonbrief` from [its GitHub repository](https://github.com/danilofreire/prisonbrief):
 
 ``` r
 library(devtools)
