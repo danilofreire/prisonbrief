@@ -1,36 +1,27 @@
+---
+title: 'prisonbrief: An R package that returns tidy data from the World Prison Brief website'
+tags:
+  - data
+  - prison
+  - rstats
+  - world prison data
+authors:
+ - name: Danilo Freire
+   orcid: 0000-0002-4712-6810
+   affiliation: 1
+ - name: Robert Myles McDonnell
+   affiliation: 2
+affiliations:
+ - name: Department of Political Economy, King's College London
+   index: 1
+ - name: Avanade
+   index: 2
+date: 30 July 2017
+---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-[![DOI](https://zenodo.org/badge/97652568.svg)](https://zenodo.org/badge/latestdoi/97652568) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) ![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/danilofreire/prisonbrief?branch=master&svg=true) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
+# Summary
 
-prisonbrief: An R package that returns tidy data from the World Prison Brief website
-====================================================================================
-
-The goal of `prisonbrief` is to download, clean and return data from the [World Prison Brief website](http://www.prisonstudies.org/). The World Prison Brief is an online database compiled by the [Institute for Criminal Policy Research](http://www.icpr.org.uk/) with information on prison systems around the world. Data currently cover 223 jurisdictions and have been collected from public sources. The `prisonbrief` package provides easy-to-use functions to convert WPB data into a format convenient for statistical analysis.
-
-Installation
-------------
-
-The stable version of `prisonbrief` is available on [CRAN](https://cran.r-project.org/package=prisonbrief). To install it, just type:
-
-``` r
-install.packages("prisonbrief")
-```
-
-You can install the most recent development version of `prisonbrief` using the `devtools` package. First, you need to install the `devtools` package with the following code:
-
-``` r
-if(!require(devtools)) install.packages("devtools")
-```
-
-Then you need to load `devtools` and install `prisonbrief` from [its GitHub repository](https://github.com/danilofreire/prisonbrief):
-
-``` r
-library(devtools)
-devtools::install_github("danilofreire/prisonbrief")
-```
-
-Usage
------
+`prisonbrief` is an R package that downloads, cleans and returns tidy data from the [World Prison Brief website](http://www.prisonstudies.org/). The World Prison Brief is an online database compiled by the [Institute for Criminal Policy Research](http://www.icpr.org.uk/) with information on prison systems around the world. Data currently cover 223 jurisdictions and have been collected from public sources. The `prisonbrief` package provides easy-to-use functions to convert WPB data into a format convenient for statistical analysis. `prisonbrief` has been published to the [Comprehensive Archive Network](https://cran.r-project.org/package=prisonbrief) and has the following DOI: <http://doi.org/10.5281/zenodo.833890>.
 
 `prisonbrief` is quite simple to use. The package contains only three functions, all of them starting with `wpb`, a mnemonic for World Prison Brief.
 
@@ -135,35 +126,3 @@ X %>% dplyr::filter(country_name %in% c("Brazil",
 ```
 
 ![](http://i.imgur.com/lIUhO5E.png)
-
-Contributions
--------------
-
-`prisonbrief` was written by [Danilo Freire](http://danilofreire.com/) and [Robert Myles McDonnell](https://robertmyles.github.io/). Feedback and comments are most welcome. If you have any suggestions on how to improve this package feel free to [open an issue on GitHub](https://github.com/danilofreire/prisonbrief/issues).
-
-Citation
---------
-
-You can cite the `prisonbrief` package with:
-
-``` r
-citation("prisonbrief")
-#> 
-#> To cite 'prisonbrief' in publications, please use:
-#> 
-#>   Danilo Freire and Robert Myles McDonnell (2017). prisonbrief:
-#>   Downloads and Parses World Prison Brief Data. R package version
-#>   0.1.0. URL: https://CRAN.R-project.org/package=prisonbrief
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {{prisonbrief}: Downloads and Parses World Prison Brief Data},
-#>     author = {Danilo Freire and Robert Myles McDonnell},
-#>     note = {R package version 0.1.0},
-#>     year = {2017},
-#>     url = {https://CRAN.R-project.org/package=prisonbrief},
-#>   }
-```
-
-Please also cite the source as [World Prison Brief, Institute for Criminal Policy Research](http://www.prisonstudies.org/about-us).

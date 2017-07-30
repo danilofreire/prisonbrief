@@ -41,7 +41,7 @@ devtools::install_github("danilofreire/prisonbrief")
 
 ## Usage
 
-`prisonbrief` is quite simple to use. The package contains only three functions, all of them starting with `wpb`, an acronym for World Prison Brief.
+`prisonbrief` is quite simple to use. The package contains only three functions, all of them starting with `wpb`, a mnemonic for World Prison Brief.
 
 The first is a convenience function named `wpb_list()`. It prints a list of available countries to the console. 
 
