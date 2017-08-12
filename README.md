@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![DOI](https://zenodo.org/badge/97652568.svg)](https://zenodo.org/badge/latestdoi/97652568) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) ![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/danilofreire/prisonbrief?branch=master&svg=true) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
+[![DOI](https://zenodo.org/badge/97652568.svg)](https://zenodo.org/badge/latestdoi/97652568) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) ![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/danilofreire/prisonbrief?branch=master&svg=true) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
 
 prisonbrief: An R package that returns tidy data from the World Prison Brief website
 ====================================================================================
