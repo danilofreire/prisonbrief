@@ -40,17 +40,17 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
         
         # parse tables from country pages:
         parse_urls <- function(x){
-                result <- xml2::read_html(x) %>%
-                        rvest::html_nodes(css = "div#basic_data") %>%
-                        rvest::html_nodes("table") %>%
-                        rvest::html_table(fill = TRUE)
+                result <- read_html(x) %>%
+                        html_nodes(css = "div#basic_data") %>%
+                        html_nodes("table") %>%
+                        html_table(fill = TRUE)
                 
-                head <- result[[1]] %>% tidyr::spread(X1, X2)
-                contacts <- result[[2]] %>% tidyr::spread(X1, X2)
-                head <- dplyr::bind_cols(head, contacts)
+                head <- result[[1]] %>% spread(X1, X2)
+                contacts <- result[[2]] %>% spread(X1, X2)
+                head <- bind_cols(head, contacts)
                 
-                main <- result[[3]] %>% tidyr::spread(X1, X2)
-                out <- dplyr::bind_cols(head, main)
+                main <- result[[3]] %>% spread(X1, X2)
+                out <- bind_cols(head, main)
                 return(out)
         }
         
@@ -60,11 +60,11 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                               query = "?field_region_taxonomy_tid=",
                               continent = NULL){
                 
-                result <- httr::GET(paste0(base, type, query, continent)) %>%
-                        xml2::read_html() %>%
-                        rvest::html_node("#views-aggregator-datatable") %>%
-                        rvest::html_table() %>%
-                        dplyr::select(country = 2, rlang::UQ(type) := 3)
+                result <- GET(paste0(base, type, query, continent)) %>%
+                        read_html() %>%
+                        html_node("#views-aggregator-datatable") %>%
+                        html_table() %>%
+                        select(country = 2, UQ(type) := 3)
                 
                 return(result)
         }
@@ -113,21 +113,21 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                                        type = "occupancy-level")
                 
                 result <- suppressMessages(
-                        dplyr::full_join(rate, total) %>%
-                                dplyr::full_join(female) %>%
-                                dplyr::full_join(pretrial) %>%
-                                dplyr::full_join(foreign) %>%
-                                dplyr::full_join(occupancy)
+                        full_join(rate, total) %>%
+                                full_join(female) %>%
+                                full_join(pretrial) %>%
+                                full_join(foreign) %>%
+                                full_join(occupancy)
                 ) %>%
-                        dplyr::mutate(iso_a2 = passport::parse_country(country))
+                        mutate(iso_a2 = parse_country(country))
                 
-                geometry <-  rnaturalearth::ne_countries(type = "map_units",
-                                                         returnclass = "sf")
+                geometry <-  ne_countries(type = "map_units",
+                                           returnclass = "sf")
                 geometry <- geometry[, c(18, 44, 64)]
                 
                 out <- suppressMessages(
-                        dplyr::full_join(result, geometry, by = ) %>%
-                                dplyr::filter(!is.na(country))
+                        full_join(result, geometry, by = ) %>%
+                                filter(!is.na(country))
                 )
                 
                 return(out)
@@ -141,22 +141,22 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 country_table <- parse_urls(url)
                 
                 country_table <- country_table %>% 
-                        magrittr::set_colnames(., 
-                                               value = c("country",
-                                                "ministry_responsible",
-                                                "prison_admin",
-                                                "female_prisoners",
-                                                "foreign_prisoners",
-                                                 "juvenile_prisoners",
-                                                 "number_institutions",
-                                                 "occupancy_level",
-                                                 "official_capacity",
-                                                    "pre_trial_prisoners",
-                                                    "prison_population_rate",
-                                                  "prison_population_total")) %>%
-                        dplyr::mutate_all(.funs = dplyr::funs(stringr::str_replace_all, 
-                                               .args = list(pattern = "\n",
-                                                           replacement = "")))
+                        set_colnames(., 
+                                     value = c("country",
+                                               "ministry_responsible",
+                                               "prison_admin",
+                                               "female_prisoners",
+                                               "foreign_prisoners",
+                                               "juvenile_prisoners",
+                                               "number_institutions",
+                                               "occupancy_level",
+                                               "official_capacity",
+                                               "pre_trial_prisoners",
+                                               "prison_population_rate",
+                                               "prison_population_total")) %>%
+                        mutate_all(.funs = funs(str_replace_all,
+                                                .args = list(pattern = "\n",
+                                                             replacement = "")))
                         
                 return(country_table)
                 

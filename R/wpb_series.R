@@ -32,26 +32,26 @@ wpb_series <- function(country = NULL){
 
   url <- paste0("http://www.prisonstudies.org/country/", country)
 
-  result <- xml2::read_html(url) %>%
-    rvest::html_nodes(css = "div#basic_data") %>%
-    rvest::html_nodes("table") %>%
-    rvest::html_table(fill = TRUE)
+  result <- read_html(url) %>%
+          html_nodes(css = "div#basic_data") %>%
+          html_nodes("table") %>%
+          html_table(fill = TRUE)
 
   series <- result[[4]]
   # find duplicated line, move index to one less this value:
   duplicate <- grep("Year", series$X1) %>% .[[2]] %>% -1
 
   series <- series[1:duplicate, ] %>%
-    dplyr::select(1:3) %>%
-    dplyr::slice(-1:-2) %>%
-    dplyr::mutate(X2 = gsub(",", "", X2),
-                  X2 = gsub("c", "", X2),
-                  X3 = gsub("c", "", X3)) %>%
-    magrittr::set_colnames(value = c("Year", "Prison population total",
-                                     "Prison population rate")) %>%
-    dplyr::mutate_all(as.numeric) %>%
-    dplyr::mutate(Country = country) %>%
-    dplyr::select(Country, dplyr::everything())
+          select(1:3) %>%
+          slice(-1:-2) %>%
+          mutate(X2 = gsub(",", "", X2),
+                 X2 = gsub("c", "", X2),
+                 X3 = gsub("c", "", X3)) %>%
+          set_colnames(value = c("Year", "Prison population total",
+                                 "Prison population rate")) %>%
+          mutate_all(as.numeric) %>%
+          mutate(Country = country) %>%
+          select(Country, everything())
 
   return(series)
 

@@ -133,7 +133,9 @@ germany
 <span class="co">#&gt; 7 germany  2012                     65889                       82</span>
 <span class="co">#&gt; 8 germany  2014                     61872                       76</span></code></pre></div>
 <p><code><a href="reference/wpb_series.html">wpb_series()</a></code> can also be combined with <code><a href="reference/wpb_list.html">wpb_list()</a></code> to make interesting time series graphs. The code below downloads data for all countries then plots the prison population rate for Brazil, Germany, Russia and the United States:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">list</span>()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+
+x &lt;-<span class="st"> </span><span class="kw">list</span>()
 countries &lt;-<span class="st"> </span><span class="kw"><a href="reference/wpb_list.html">wpb_list</a></span>()
 <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(countries)){
   y &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw"><a href="reference/wpb_series.html">wpb_series</a></span>(<span class="dt">country =</span> countries<span class="op">$</span>country_url[i]), <span class="dt">silent =</span> <span class="ot">FALSE</span>)

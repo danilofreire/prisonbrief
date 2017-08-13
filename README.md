@@ -111,6 +111,8 @@ germany
 `wpb_series()` can also be combined with `wpb_list()` to make interesting time series graphs. The code below downloads data for all countries then plots the prison population rate for Brazil, Germany, Russia and the United States:
 
 ``` r
+library(dplyr)
+
 x <- list()
 countries <- wpb_list()
 for(i in 1:nrow(countries)){
