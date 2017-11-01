@@ -39,11 +39,17 @@ library(devtools)
 devtools::install_github("danilofreire/prisonbrief")
 ```
 
+If you are using Linux, you may need to type the following command before installing `prisonbrief`:
+
+```{bash linux-dependency, eval = FALSE}
+sudo apt-get install libudunits2-dev
+```
+
 ## Usage
 
 `prisonbrief` is quite simple to use. The package contains only three functions, all of them starting with `wpb`, a mnemonic for World Prison Brief.
 
-The first is a convenience function named `wpb_list()`. It prints a list of available countries to the console. 
+The first is a convenience function named `wpb_list()`. It prints a list of available countries to the console.
 
 ```{r wpb-list}
 library(prisonbrief)
@@ -102,7 +108,7 @@ for(i in 1:nrow(countries)){
     next
   }
 }
-X <- data.table::rbindlist(x, fill = TRUE) %>% 
+X <- data.table::rbindlist(x, fill = TRUE) %>%
   dplyr::full_join(countries, by = c("Country" = "country_url"))
 
 X %>% dplyr::filter(country_name %in% c("Brazil",
@@ -116,7 +122,7 @@ X %>% dplyr::filter(country_name %in% c("Brazil",
 ```
 
 ![](http://i.imgur.com/lIUhO5E.png)
-  
+
 ## Contributions
 
 `prisonbrief` was written by [Danilo Freire](http://danilofreire.com/) and [Robert Myles McDonnell](https://robertmyles.github.io/). Feedback and comments are most welcome. If you have any suggestions on how to improve this package feel free to [open an issue on GitHub](https://github.com/danilofreire/prisonbrief/issues).

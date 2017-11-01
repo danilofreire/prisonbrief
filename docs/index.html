@@ -70,6 +70,8 @@
 <p>Then you need to load <code>devtools</code> and install <code>prisonbrief</code> from <a href="https://github.com/danilofreire/prisonbrief">its GitHub repository</a>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"danilofreire/prisonbrief"</span>)</code></pre></div>
+<p>If you are using Linux, you may need to type the following command before installing <code>prisonbrief</code>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt-get install libudunits2-dev</code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -145,7 +147,7 @@ countries &lt;-<span class="st"> </span><span class="kw"><a href="reference/wpb_
     <span class="cf">next</span>
   }
 }
-X &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">rbindlist</span>(x, <span class="dt">fill =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+X &lt;-<span class="st"> </span>data.table<span class="op">::</span><span class="kw">rbindlist</span>(x, <span class="dt">fill =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/join.html">full_join</a></span>(countries, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">"Country"</span> =<span class="st"> "country_url"</span>))
 
 X <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(country_name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">"Brazil"</span>,

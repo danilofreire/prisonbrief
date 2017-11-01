@@ -29,6 +29,12 @@ library(devtools)
 devtools::install_github("danilofreire/prisonbrief")
 ```
 
+If you are using Linux, you may need to type the following command before installing `prisonbrief`:
+
+``` bash
+sudo apt-get install libudunits2-dev
+```
+
 Usage
 -----
 
@@ -123,7 +129,7 @@ for(i in 1:nrow(countries)){
     next
   }
 }
-X <- data.table::rbindlist(x, fill = TRUE) %>% 
+X <- data.table::rbindlist(x, fill = TRUE) %>%
   dplyr::full_join(countries, by = c("Country" = "country_url"))
 
 X %>% dplyr::filter(country_name %in% c("Brazil",
