@@ -102,15 +102,15 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 rate <- api_parse(continent = continent,
                                   type = "prison_population_rate")
                 total <- api_parse(continent = continent,
-                                   type = "prison-population-total")
+                                   type = "prison_population_total")
                 female <- api_parse(continent = continent,
-                                    type = "female-prisoners")
+                                    type = "female_prisoners")
                 pretrial <- api_parse(continent = continent,
-                                      type = "pre-trial-detainees")
+                                      type = "pre_trial_detainees")
                 foreign <- api_parse(continent = continent,
-                                     type = "foreign-prisoners")
+                                     type = "foreign_prisoners")
                 occupancy <- api_parse(continent = continent,
-                                       type = "occupancy-level")
+                                       type = "occupancy_level")
                 
                 result <- suppressMessages(
                         full_join(rate, total) %>%
