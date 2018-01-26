@@ -4,7 +4,6 @@
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_table
 #' @importFrom magrittr set_colnames
-#' @importFrom magrittr %>%
 #' @importFrom tidyr spread
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr slice
@@ -42,7 +41,7 @@ wpb_series <- function(country = NULL){
   duplicate <- grep("Year", series$X1) %>% .[[2]] %>% -1
 
   series <- series[1:duplicate, ] %>%
-          select(1:3) %>%
+          dplyr::select(1:3) %>%
           slice(-1:-2) %>%
           mutate(X2 = gsub(",", "", X2),
                  X2 = gsub("c", "", X2),
@@ -51,7 +50,7 @@ wpb_series <- function(country = NULL){
                                  "Prison population rate")) %>%
           mutate_all(as.numeric) %>%
           mutate(Country = country) %>%
-          select(Country, everything())
+          dplyr::select(Country, everything())
 
   return(series)
 

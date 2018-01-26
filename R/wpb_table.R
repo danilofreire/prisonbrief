@@ -5,15 +5,15 @@
 #' @importFrom rlang UQ
 #' @importFrom xml2 read_html
 #' @importFrom rvest html_nodes
+#' @importFrom rvest html_node
 #' @importFrom rvest html_table
-#' @importFrom magrittr set_colnames
-#' @importFrom magrittr '%>%'
 #' @importFrom tidyr spread
 #' @importFrom dplyr bind_cols
 #' @importFrom dplyr funs
 #' @importFrom dplyr mutate_all
 #' @importFrom dplyr full_join
 #' @importFrom dplyr select
+#' @importFrom dplyr contains
 #' @importFrom dplyr mutate
 #' @importFrom data.table ':='
 #' @importFrom passport parse_country
@@ -123,11 +123,11 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 
                 geometry <-  ne_countries(type = "map_units",
                                            returnclass = "sf")
-                geometry <- geometry[, c(18, 44, 64)]
+                geometry <- dplyr::select(geometry, name, iso_a2, geometry)
                 
                 out <- suppressMessages(
-                        full_join(result, geometry, by = ) %>%
-                                filter(!is.na(country))
+                        full_join(result, geometry) %>%
+                                dplyr::filter(!is.na(country))
                 )
                 
                 return(out)
@@ -141,22 +141,26 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 country_table <- parse_urls(url)
                 
                 country_table <- country_table %>% 
-                        set_colnames(., 
-                                     value = c("country",
-                                               "ministry_responsible",
-                                               "prison_admin",
-                                               "female_prisoners",
-                                               "foreign_prisoners",
-                                               "juvenile_prisoners",
-                                               "number_institutions",
-                                               "occupancy_level",
-                                               "official_capacity",
-                                               "pre_trial_prisoners",
-                                               "prison_population_rate",
-                                               "prison_population_total")) %>%
+                        select(country = Country, 
+                               ministry_responsible = `Ministry responsible`,
+                               prison_admin = `Prison administration`, 
+                               female_prisoners = contains("Female prisoners "),
+                               foreign_prisoners = contains("Foreign prinsoners "),
+                               juvenile_prisoners = contains("Juveniles "),
+                               occupancy_level = contains("Occupancy level "),
+                               number_institutions = contains("Number of establishments"),
+                               official_capacity = contains("Official capacity "),
+                               pre_trial_prisoners = contains("Pre-trial "),
+                               prison_population_rate = contains("Prison population rate "),
+                               prison_population_total = contains("Prison population total ")
+                               ) %>%
                         mutate_all(.funs = funs(str_replace_all,
                                                 .args = list(pattern = "\n",
                                                              replacement = "")))
+                colnames(country_table)[grep(
+                        "pre_trial_prisoners1", 
+                        colnames(country_table)
+                        )] <- "pre_trial_prisoners" 
                         
                 return(country_table)
                 
