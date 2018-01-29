@@ -3,6 +3,7 @@
 #' @import rnaturalearthdata
 #' @importFrom httr GET
 #' @importFrom rlang UQ
+#' @importFrom rlang ':='
 #' @importFrom xml2 read_html
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_node
@@ -15,7 +16,6 @@
 #' @importFrom dplyr select
 #' @importFrom dplyr contains
 #' @importFrom dplyr mutate
-#' @importFrom data.table ':='
 #' @importFrom passport parse_country
 #' @importFrom passport as_country_name
 #' @importFrom rnaturalearth ne_countries
@@ -55,10 +55,17 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
         }
         
         # parse ranking API:
-        api_parse <- function(base = "http://www.prisonstudies.org/highest-to-lowest/",
-                              type = NULL,
-                              query = "?field_region_taxonomy_tid=",
-                              continent = NULL){
+        api_parse <- function(continent = NULL, type = NULL){
+                
+                base <- "http://www.prisonstudies.org/highest-to-lowest/"
+                query = "?field_region_taxonomy_tid="
+                # type = match.arg(type, 
+                #                  choices = c("prison-population-total",
+                #                              "prison_population_rate",
+                #                              "pre-trial-detainees",
+                #                              "female-prisoners",
+                #                              "foreign-prisoners",
+                #                              "occupancy-level"))
                 
                 result <- GET(paste0(base, type, query, continent)) %>%
                         read_html() %>%
@@ -100,17 +107,17 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 
                 
                 rate <- api_parse(continent = continent,
-                                  type = "prison_population_rate")
+                                  type = "prison_population_rate") ## !!! underlines here 
                 total <- api_parse(continent = continent,
-                                   type = "prison_population_total")
+                                   type = "prison-population-total")
                 female <- api_parse(continent = continent,
-                                    type = "female_prisoners")
+                                    type = "female-prisoners")
                 pretrial <- api_parse(continent = continent,
-                                      type = "pre_trial_detainees")
+                                      type = "pre-trial-detainees")
                 foreign <- api_parse(continent = continent,
-                                     type = "foreign_prisoners")
+                                     type = "foreign-prisoners")
                 occupancy <- api_parse(continent = continent,
-                                       type = "occupancy_level")
+                                       type = "occupancy-level")
                 
                 result <- suppressMessages(
                         full_join(rate, total) %>%
@@ -129,6 +136,7 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                         full_join(result, geometry) %>%
                                 dplyr::filter(!is.na(country))
                 )
+                colnames(out) <- gsub("-", "_", colnames(out))
                 
                 return(out)
                 
