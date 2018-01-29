@@ -2,8 +2,6 @@
 #' @description Download and parse World Prison Brief data
 #' @import rnaturalearthdata
 #' @importFrom httr GET
-#' @importFrom rlang UQ
-#' @importFrom rlang ':='
 #' @importFrom xml2 read_html
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_node
@@ -14,6 +12,7 @@
 #' @importFrom dplyr mutate_all
 #' @importFrom dplyr full_join
 #' @importFrom dplyr select
+#' @importFrom dplyr rename
 #' @importFrom dplyr contains
 #' @importFrom dplyr mutate
 #' @importFrom passport parse_country
@@ -84,8 +83,9 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 result <- GET(paste0(base, type, query, continent)) %>%
                         read_html() %>%
                         html_node("#views-aggregator-datatable") %>%
-                        html_table() %>%
-                        select(country = 2, UQ(type) := 3)
+                        html_table() %>% 
+                        select(-Ranking) %>% 
+                        rename(country = Title)
                 
                 return(result)
         }
@@ -150,7 +150,11 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                         full_join(result, geometry) %>%
                                 dplyr::filter(!is.na(country))
                 )
-                colnames(out) <- gsub("-", "_", colnames(out))
+                
+                colnames(out) <- c("country", "prison_population_rate", 
+                                   "prison_population_total", "female_prisoners",
+                                   "pre_trial_detainees", "foreign_prisoners",
+                                   "occupancy_level", "iso_a2", "geometry")
                 
                 return(out)
                 
