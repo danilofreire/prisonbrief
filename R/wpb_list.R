@@ -34,7 +34,7 @@ wpb_list <- function(){
 #' @description Creates a list of all countries in a given region.
 #' @param region \code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.
 #' @export
-wbp_region_list <- function(region = c("Africa", "Asia", "Caribbean",
+wpb_region_list <- function(region = c("Africa", "Asia", "Caribbean",
                                        "Central America", "Europe",
                                        "Middle East", "North America",
                                        "Oceania", "South America")){

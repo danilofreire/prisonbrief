@@ -22,6 +22,27 @@
 #' @importFrom stringr str_replace_all
 #' @param region \code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.
 #' @param country \code{character}. If details of a specific country are required, the country can be specified by name. A non-\code{NULL} value for this parameter will void the \code{region} argument. For a list of country names, use \code{wpb_list()}.
+#' @return Data Frame with 10 variables:
+#' \itemize{
+#'   \item country \code{character}.
+#'   \item prison_population_rate \code{integer},  per 100,000 of the national population.
+#'   \item prison_population_total \code{integer}.
+#'   \item female_prisoners \code{numeric}, (percentage of total prison pop.).
+#'   \item pre_trial_detainees \code{numeric}, (percentage of total prison pop.).
+#'   \item foreign_prisoners \code{numeric}, (percentage of total prison pop.).
+#'   \item occupancy_level \code{numeric},  (percentage based on official capacity).
+#'   \item iso_a2 \code{character}. See notes.
+#'   \item geometry \code{sfc_MULTIPOLYGON}.
+#' }
+#' @note We recommend calling this function using the region argument, as the data come 
+#' back in a format more useful for analysis. Querying a specific country will return a dataframe
+#' in which certain columns contain items such as parentheses and auxiliary text, rendering follow-on 
+#' analysis more cumbersome. 
+#' As regards the spatial information, the \code{geometry} column will be an empty list where it has not matched 
+#' every entry in \code{country}. This is due to the way territories are coded 
+#'  according to ISO A2 codes. For example, \code{country} will contain 
+#'  "Jersey (United Kingdom)", whereas \code{geometry} contains information for only
+#'  the United Kingdom as a whole. We hope to improve this in future releases of prisonBrief.
 #' @examples
 #' \dontrun{
 #' # Get details for Spain:
@@ -59,13 +80,6 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 
                 base <- "http://www.prisonstudies.org/highest-to-lowest/"
                 query = "?field_region_taxonomy_tid="
-                # type = match.arg(type, 
-                #                  choices = c("prison-population-total",
-                #                              "prison_population_rate",
-                #                              "pre-trial-detainees",
-                #                              "female-prisoners",
-                #                              "foreign-prisoners",
-                #                              "occupancy-level"))
                 
                 result <- GET(paste0(base, type, query, continent)) %>%
                         read_html() %>%
@@ -130,7 +144,7 @@ wpb_table <- function(region = c("Africa", "Asia", "Caribbean",
                 
                 geometry <-  ne_countries(type = "map_units",
                                            returnclass = "sf")
-                geometry <- dplyr::select(geometry, name, iso_a2, geometry)
+                geometry <- dplyr::select(geometry, iso_a2, geometry)
                 
                 out <- suppressMessages(
                         full_join(result, geometry) %>%
