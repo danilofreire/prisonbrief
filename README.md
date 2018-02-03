@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![DOI](https://zenodo.org/badge/97652568.svg)](https://zenodo.org/badge/latestdoi/97652568) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) ![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/danilofreire/prisonbrief?branch=master&svg=true) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
+[![DOI](https://zenodo.org/badge/97652568.svg)](https://zenodo.org/badge/latestdoi/97652568) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/prisonbrief)](https://cran.r-project.org/package=prisonbrief) [![Travis-CI Build Status](https://travis-ci.org/danilofreire/prisonbrief.svg?branch=master)](https://travis-ci.org/danilofreire/prisonbrief) ![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/danilofreire/prisonbrief?branch=master&svg=true) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/grand-total/prisonbrief)](https://CRAN.R-project.org/package=prisonbrief)
 
 prisonbrief: An R package that returns tidy data from the World Prison Brief website
 ====================================================================================
@@ -67,11 +67,11 @@ The second function is `wpb_table()`. This function returns a series of variable
 ``` r
 africa <- wpb_table(region = "Africa")
 names(africa)
-#>  [1] "country"                 "prison_population_rate" 
-#>  [3] "prison-population-total" "female-prisoners"       
-#>  [5] "pre-trial-detainees"     "foreign-prisoners"      
-#>  [7] "occupancy-level"         "iso_a2"                 
-#>  [9] "name"                    "geometry"
+#> [1] "country"                 "prison_population_rate" 
+#> [3] "prison_population_total" "female_prisoners"       
+#> [5] "pre_trial_detainees"     "foreign_prisoners"      
+#> [7] "occupancy_level"         "iso_a2"                 
+#> [9] "geometry"
 ```
 
 The region choices are "Africa", "Asia", "Caribbean", "Central America", "Europe", "Middle East", "North America", "Oceania", "South America" and "All".

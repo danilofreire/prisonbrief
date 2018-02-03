@@ -1,7 +1,7 @@
 Package: prisonbrief
 Type: Package
 Title: Downloads and Parses World Prison Brief Data
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Danilo", "Freire", , "danilofreire@gmail.com", c("aut", "cre")),
     person("Robert", "McDonnell", , "mcdonnell.robert5@gmail.com", c("aut"))

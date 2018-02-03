@@ -4,13 +4,13 @@ citEntry(entry = "Manual",
   title        = "{prisonbrief}: Downloads and Parses World Prison Brief Data",
   author       = personList(as.person("Danilo Freire"),
   as.person("Robert Myles McDonnell")),
-  note = "R package version 0.1.0",
-  year = "2017",
+  note = "R package version 0.1.1",
+  year = "2018",
   url = "https://CRAN.R-project.org/package=prisonbrief",
 
   textVersion  =
-  paste("Danilo Freire and Robert Myles McDonnell (2017).",
+  paste("Danilo Freire and Robert Myles McDonnell (2018).",
         "prisonbrief: Downloads and Parses World Prison Brief Data.",
-        "R package version 0.1.0.",
+        "R package version 0.1.1.",
         "URL: https://CRAN.R-project.org/package=prisonbrief")
 )
