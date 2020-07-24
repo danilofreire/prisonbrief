@@ -4,3 +4,8 @@
 ^README\.Rmd$
 ^README-.*\.png$
 ^docs$
+CONTRIBUTING.md
+appveyor.yml
+paper/*
+\.travis.yml
+\.github

@@ -4,7 +4,9 @@
 \name{wpb_series_data}
 \alias{wpb_series_data}
 \title{Time series data on global prison population.}
-\format{A data frame with 1567 rows and 4 variables.}
+\format{
+A data frame with 1567 rows and 4 variables.
+}
 \usage{
 wpb_series_data
 }

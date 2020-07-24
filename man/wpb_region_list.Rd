@@ -4,11 +4,15 @@
 \alias{wpb_region_list}
 \title{Lists all countries in a region}
 \usage{
-wpb_region_list(region = c("Africa", "Asia", "Caribbean", "Central America",
-  "Europe", "Middle East", "North America", "Oceania", "South America"))
+wpb_region_list(
+  region = c("Africa", "Asia", "Caribbean", "Central America", "Europe", "Middle East",
+    "North America", "Oceania", "South America")
+)
 }
 \arguments{
-\item{region}{\code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.}
+\item{region}{\code{character}. Return details for all the countries in 
+the particular region. For a list of the countries in each region, use
+ \code{wbp_region_list()}.}
 }
 \description{
 Creates a list of all countries in a given region.
