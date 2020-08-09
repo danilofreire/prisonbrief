@@ -11,8 +11,13 @@
 #' @importFrom dplyr mutate
 #' @importFrom dplyr mutate_all
 #' @importFrom dplyr everything
-#' @param country Country name, in the url-style used by the World Prison Brief. See note below.
-#' @note Important: the country names must be the \emph{url} names associated with the country. These can be seen in the second column of the dataframe returned from \code{wpb_list()}. Most of these are simply lower-case versions of the country name, such as 'algeria'. Some, such as "American Samoa  (USA)" are in the following format: \code{american-samoa-usa}.
+#' @param country Country name, in the url-style used by the World Prison Brief. 
+#' See note below.
+#' @note Important: the country names must be the \emph{url} names associated 
+#' with the country. These can be seen in the second column of the dataframe 
+#' returned from \code{wpb_list()}. Most of these are simply lower-case versions
+#'  of the country name, such as 'algeria'. Some, such as "American Samoa  (USA)" 
+#'  are in the following format: \code{american-samoa-usa}.
 #' @export
 
 wpb_series <- function(country = NULL){
@@ -26,7 +31,8 @@ wpb_series <- function(country = NULL){
   ccc <- wpb_list()
 
   if(country %ni% ccc$country_url){
-    stop("No country matches your request. Please see wpb_list() for a list of available countries,")
+    stop("No country matches your request. Please see wpb_list() for a 
+         list of available countries,")
   }
 
   url <- paste0("http://www.prisonstudies.org/country/", country)

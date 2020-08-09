@@ -4,7 +4,9 @@
 \name{wpb_tables_data}
 \alias{wpb_tables_data}
 \title{Data on global prison population.}
-\format{A data frame with 226 rows and 11 variables.}
+\format{
+A data frame with 226 rows and 11 variables.
+}
 \usage{
 wpb_tables_data
 }

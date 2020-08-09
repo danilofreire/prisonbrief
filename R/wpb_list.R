@@ -17,7 +17,68 @@ wpb_list <- function(){
 
   lista <- sort(unique(lista))
 
-  country_url = sort(c("algeria", "angola", "benin", "botswana", "burkina-faso", "burundi", "cameroon", "cape-verde-cabo-verde", "central-african-republic", "chad", "comoros", "congo-brazzaville", "cote-divoire", "democratic-republic-congo-formerly-zaire", "djibouti", "egypt", "equatorial-guinea", "eritrea", "ethiopia", "gabon", "gambia", "ghana", "guinea-bissau", "kenya", "lesotho", "liberia", "libya", "madagascar", "malawi", "mali", "mauritania", "mauritius", "mayotte-france", "morocco", "mozambique", "namibia", "niger", "nigeria", "republic-guinea", "reunion-france", "rwanda", "sao-tome-e-principe", "senegal", "seychelles", "sierra-leone", "somalia", "south-africa", "south-sudan", "sudan", "swaziland", "tanzania", "togo", "tunisia", "uganda", "zambia", "zimbabwe", "afghanistan", "bangladesh", "bhutan", "brunei-darussalam", "cambodia", "china", "democratic-peoples-republic-north-korea", "hong-kong-china", "india", "indonesia", "iran", "japan", "kazakhstan", "kyrgyzstan", "laos", "macau-china", "malaysia", "maldives", "mongolia", "myanmar-formerly-burma", "nepal", "pakistan", "philippines", "republic-south-korea", "singapore", "sri-lanka", "taiwan", "tajikistan", "thailand", "turkmenistan", "uzbekistan", "vietnam", "anguilla-united-kingdom", "antigua-and-barbuda", "aruba-netherlands", "bahamas", "barbados", "cayman-islands-united-kingdom", "cuba", "cura\u00a7ao-netherlands", "dominica", "Dominican Republic", "grenada", "guadeloupe-france", "haiti", "jamaica", "martinique-france", "puerto-rico-usa", "sint-maarten-netherlands", "st-kitts-and-nevis", "st-lucia", "st-vincent-and-grenadines", "trinidad-and-tobago", "virgin-islands-united-kingdom", "virgin-islands-usa", "belize", "costa-rica", "el-salvador", "guatemala", "honduras", "mexico", "nicaragua", "panama", "albania", "andorra", "armenia", "austria", "azerbaijan", "belarus", "belgium", "bosnia-and-herzegovina-federation", "bosnia-and-herzegovina-republika-srpska", "bulgaria", "croatia", "cyprus-republic", "czech-republic", "denmark", "estonia", "faeroe-islands-denmark", "finland", "france", "georgia", "germany", "gibraltar-united-kingdom", "greece", "guernsey-united-kingdom", "hungary", "iceland", "ireland-republic", "isle-man-united-kingdom", "italy", "jersey-united-kingdom)", "kosovokosova", "latvia", "liechtenstein", "lithuania", "luxembourg", "macedonia-former-yugoslav-republic", "malta", "moldova-republic", "monaco", "montenegro", "netherlands", "norway", "poland", "portugal", "romania", "russian-federation", "san-marino", "serbia", "slovakia", "slovenia", "spain", "sweden", "switzerland", "turkey", "ukraine", "united-kingdom-england-wales", "united-kingdom-northern-ireland", "united-kingdom-scotland", "bahrain", "iraq", "israel", "jordan", "kuwait", "lebanon", "oman", "qatar", "saudi-arabia", "syria", "united-arab-emirates", "yemen", "bermuda-united-kingdom", "canada", "greenland-denmark", "united-states-america", "american-samoa-usa", "australia", "cook-islands-new-zealand", "fiji", "french-polynesia-france", "guam-usa", "kiribati", "marshall-islands", "micronesia-federated-states", "nauru", "new-caledonia-france", "new-zealand", "northern-mariana-islands-usa", "palau", "papua-new-guinea", "samoa-formerly-western-samoa", "solomon-islands", "timor-leste-formerly-east-timor", "tonga", "tuvalu", "vanuatu", "argentina", "bolivia", "brazil", "chile", "colombia", "ecuador", "french-guianaguyane-france", "guyana", "paraguay", "peru", "suriname", "uruguay", "venezuela"))
+  country_url = sort(c("algeria", "angola", "benin", "botswana", "burkina-faso",
+                       "burundi", "cameroon", "cape-verde-cabo-verde", 
+                       "central-african-republic", "chad", "comoros", 
+                       "congo-brazzaville", "cote-divoire", 
+                       "democratic-republic-congo-formerly-zaire", "djibouti", 
+                       "egypt", "equatorial-guinea", "eritrea", "ethiopia", 
+                       "gabon", "gambia", "ghana", "guinea-bissau", "kenya", 
+                       "lesotho", "liberia", "libya", "madagascar", "malawi", 
+                       "mali", "mauritania", "mauritius", "mayotte-france", 
+                       "morocco", "mozambique", "namibia", "niger", "nigeria", 
+                       "republic-guinea", "reunion-france", "rwanda", 
+                       "sao-tome-e-principe", "senegal", "seychelles", 
+                       "sierra-leone", "somalia", "south-africa", "south-sudan", 
+                       "sudan", "swaziland", "tanzania", "togo", "tunisia", 
+                       "uganda", "zambia", "zimbabwe", "afghanistan", "bangladesh",
+                       "bhutan", "brunei-darussalam", "cambodia", "china", 
+                       "democratic-peoples-republic-north-korea", "hong-kong-china", 
+                       "india", "indonesia", "iran", "japan", "kazakhstan", 
+                       "kyrgyzstan", "laos", "macau-china", "malaysia", "maldives",
+                       "mongolia", "myanmar-formerly-burma", "nepal", "pakistan", 
+                       "philippines", "republic-south-korea", "singapore", "sri-lanka",
+                       "taiwan", "tajikistan", "thailand", "turkmenistan", 
+                       "uzbekistan", "vietnam", "anguilla-united-kingdom", 
+                       "antigua-and-barbuda", "aruba-netherlands", "bahamas",
+                       "barbados", "cayman-islands-united-kingdom", "cuba", 
+                       "cura\u00a7ao-netherlands", "dominica", "Dominican Republic", 
+                       "grenada", "guadeloupe-france", "haiti", "jamaica", 
+                       "martinique-france", "puerto-rico-usa", "sint-maarten-netherlands", 
+                       "st-kitts-and-nevis", "st-lucia", "st-vincent-and-grenadines", 
+                       "trinidad-and-tobago", "virgin-islands-united-kingdom", 
+                       "virgin-islands-usa", "belize", "costa-rica", "el-salvador", 
+                       "guatemala", "honduras", "mexico", "nicaragua", "panama", 
+                       "albania", "andorra", "armenia", "austria", "azerbaijan", 
+                       "belarus", "belgium", "bosnia-and-herzegovina-federation", 
+                       "bosnia-and-herzegovina-republika-srpska", "bulgaria", 
+                       "croatia", "cyprus-republic", "czech-republic", "denmark", 
+                       "estonia", "faeroe-islands-denmark", "finland", "france", 
+                       "georgia", "germany", "gibraltar-united-kingdom", "greece", 
+                       "guernsey-united-kingdom", "hungary", "iceland", 
+                       "ireland-republic", "isle-man-united-kingdom", "italy", 
+                       "jersey-united-kingdom)", "kosovokosova", "latvia", 
+                       "liechtenstein", "lithuania", "luxembourg", 
+                       "macedonia-former-yugoslav-republic", "malta", "moldova-republic", 
+                       "monaco", "montenegro", "netherlands", "norway", "poland", 
+                       "portugal", "romania", "russian-federation", "san-marino", 
+                       "serbia", "slovakia", "slovenia", "spain", "sweden", 
+                       "switzerland", "turkey", "ukraine", "united-kingdom-england-wales", 
+                       "united-kingdom-northern-ireland", "united-kingdom-scotland", 
+                       "bahrain", "iraq", "israel", "jordan", "kuwait", "lebanon", 
+                       "oman", "qatar", "saudi-arabia", "syria", "united-arab-emirates", 
+                       "yemen", "bermuda-united-kingdom", "canada", "greenland-denmark", 
+                       "united-states-america", "american-samoa-usa", "australia", 
+                       "cook-islands-new-zealand", "fiji", "french-polynesia-france", 
+                       "guam-usa", "kiribati", "marshall-islands", 
+                       "micronesia-federated-states", "nauru", "new-caledonia-france", 
+                       "new-zealand", "northern-mariana-islands-usa", "palau", 
+                       "papua-new-guinea", "samoa-formerly-western-samoa", 
+                       "solomon-islands", "timor-leste-formerly-east-timor", 
+                       "tonga", "tuvalu", "vanuatu", "argentina", "bolivia", 
+                       "brazil", "chile", "colombia", "ecuador", 
+                       "french-guianaguyane-france", "guyana", "paraguay", "peru",
+                       "suriname", "uruguay", "venezuela"))
 
 
   df <- tibble(
@@ -32,7 +93,9 @@ wpb_list <- function(){
 
 #' @title Lists all countries in a region
 #' @description Creates a list of all countries in a given region.
-#' @param region \code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.
+#' @param region \code{character}. Return details for all the countries in 
+#' the particular region. For a list of the countries in each region, use
+#'  \code{wbp_region_list()}.
 #' @export
 wpb_region_list <- function(region = c("Africa", "Asia", "Caribbean",
                                        "Central America", "Europe",
@@ -46,7 +109,9 @@ wpb_region_list <- function(region = c("Africa", "Asia", "Caribbean",
 
   if(grepl("Africa", states)){
 
-    region_list <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Cape Verde (Cabo Verde)", "Central African Republic", "Chad", "Comoros", "Congo (Brazzaville)", "Cote d'Ivoire", "Democratic Republic of Congo (formerly Zaire)", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Mayotte (France)", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Republic of Guinea", "Reunion (France)", "Rwanda", "Sao Tome e Principe", "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Swaziland", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe")
+    region_list <- c("Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", 
+                     "Cameroon", "Cape Verde (Cabo Verde)", "Central African Republic", 
+                     "Chad", "Comoros", "Congo (Brazzaville)", "Cote d'Ivoire", "Democratic Republic of Congo (formerly Zaire)", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Mauritius", "Mayotte (France)", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Republic of Guinea", "Reunion (France)", "Rwanda", "Sao Tome e Principe", "Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Swaziland", "Tanzania", "Togo", "Tunisia", "Uganda", "Zambia", "Zimbabwe")
 
     } else if(grepl("Asia", states)){
 

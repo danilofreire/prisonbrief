@@ -25,17 +25,16 @@ The stable version of `prisonbrief` is available on [CRAN](https://cran.r-projec
 install.packages("prisonbrief")
 ```
 
-You can install the most recent development version of `prisonbrief` using the `devtools` package. First, you need to install the `devtools` package with the following code:
+You can install the most recent development version of `prisonbrief` using the `remotes` package. First, you need to install the `remotes` package with the following code:
 
-```{r devtools-installation, eval = FALSE}
-if(!require(devtools)) install.packages("devtools")
+```{r remotes-installation, eval = FALSE}
+if(!require(remotes)) install.packages("remotes")
 ```
 
-Then you need to load `devtools` and install `prisonbrief` from [its GitHub repository](https://github.com/danilofreire/prisonbrief):
+Then you can install `prisonbrief` from [its GitHub repository](https://github.com/danilofreire/prisonbrief):
 
 ```{r gh-installation, eval = FALSE}
-library(devtools)
-devtools::install_github("danilofreire/prisonbrief")
+remotes::install_github("danilofreire/prisonbrief")
 ```
 
 If you are using Linux, you may need to type the following command before installing `prisonbrief`:
@@ -43,6 +42,8 @@ If you are using Linux, you may need to type the following command before instal
 ```{bash linux-dependency, eval = FALSE}
 sudo apt-get install libudunits2-dev
 ```
+
+`prisonbrief` relies on some spatial-data packages in order to return data as simple features dataframes. You may need to install packages such as `rgeos` if you do not already have them installed.  
 
 ## Usage
 

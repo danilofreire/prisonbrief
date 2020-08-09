@@ -4,20 +4,28 @@
 \alias{wpb_table}
 \title{Download and parse World Prison Brief data}
 \usage{
-wpb_table(region = c("Africa", "Asia", "Caribbean", "Central America",
-  "Europe", "Middle East", "North America", "Oceania", "South America", "All"),
-  country = NULL)
+wpb_table(
+  region = c("Africa", "Asia", "Caribbean", "Central America", "Europe", "Middle East",
+    "North America", "Oceania", "South America", "All"),
+  country = NULL
+)
 }
 \arguments{
-\item{region}{\code{character}. Return details for all the countries in the particular region. For a list of the countries in each region, use \code{wbp_region_list()}.}
+\item{region}{\code{character}. Return details for all the countries in the
+particular region. For a list of the countries in each region, use
+\code{wbp_region_list()}.}
 
-\item{country}{\code{character}. If details of a specific country are required, the country can be specified by name. A non-\code{NULL} value for this parameter will void the \code{region} argument. For a list of country names, use \code{wpb_list()}.}
+\item{country}{\code{character}. If details of a specific country are
+required, the country can be specified by name. A non-\code{NULL} value for
+ this parameter will void the \code{region} argument. For a list of country
+  names, use \code{wpb_list()}.}
 }
 \value{
 Data Frame with 10 variables:
 \itemize{
   \item country \code{character}.
-  \item prison_population_rate \code{integer},  per 100,000 of the national population.
+  \item prison_population_rate \code{integer},  per 100,000 of the national
+  population.
   \item prison_population_total \code{integer}.
   \item female_prisoners \code{numeric}, (percentage of total prison pop.).
   \item pre_trial_detainees \code{numeric}, (percentage of total prison pop.).
@@ -31,15 +39,16 @@ Data Frame with 10 variables:
 Download and parse World Prison Brief data
 }
 \note{
-We recommend calling this function using the region argument, as the data come 
-back in a format more useful for analysis. Querying a specific country will return a dataframe
-in which certain columns contain items such as parentheses and auxiliary text, rendering follow-on 
-analysis more cumbersome. 
-As regards the spatial information, the \code{geometry} column will be an empty list where it has not matched 
-every entry in \code{country}. This is due to the way territories are coded 
- according to ISO A2 codes. For example, \code{country} will contain 
- "Jersey (United Kingdom)", whereas \code{geometry} contains information for only
- the United Kingdom as a whole. We hope to improve this in future releases of prisonBrief.
+We recommend calling this function using the region argument, as the data
+come back in a format more useful for analysis. Querying a specific country will
+return a dataframe in which certain columns contain items such as parentheses
+and auxiliary text, rendering follow-on analysis more cumbersome.
+As regards the spatial information, the \code{geometry} column will be an
+empty list where it has not matched every entry in \code{country}. This is due
+to the way territories are coded according to ISO A2 codes. For example,
+\code{country} will contain "Jersey (United Kingdom)", whereas \code{geometry}
+contains information for only the United Kingdom as a whole. We hope to improve
+this in future releases of prisonBrief.
 }
 \examples{
 \dontrun{
